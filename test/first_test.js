@@ -1,5 +1,5 @@
 var expect = require('chai').expect;
-var first = require('../src-cov/first.js');
+var first = require('../src/first.js');
 describe('Test for the first in adventofcode', function() {
 	it('( is one floor up', function () {
 		expect(first.whichFloor('(')).to.equal(1);

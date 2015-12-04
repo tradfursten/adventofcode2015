@@ -1,5 +1,5 @@
 var expect = require('chai').expect;
-var forth = require('../src-cov/forth.js');
+var forth = require('../src/forth.js');
 
 describe('Test suite for day 4', function() {
   it('abcdef returns 609043', function() {

@@ -4,8 +4,10 @@
   "description": "Solutions for adventofcode.com 2015",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
-  },
+    "test": "mocha",
+    "cover": "istanbul cover _mocha",
+		"coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls"
+	},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tradfursten/adventofcode2015.git"
@@ -23,6 +25,8 @@
   },
   "devDependencies": {
     "coveralls": "^2.11.4",
+    "istanbul": "^0.4.1",
+    "istanbul-coveralls": "^1.0.3",
     "mocha-lcov-reporter": "^1.0.0"
   }
 }
