@@ -57,3 +57,40 @@ describe('Nice and naughty strings', function() {
 		expect(day5.isNice('dvszwmarrgswjxmb')).to.false;
 	});
 });
+
+describe('Naugthy and nice strings part 2', function() {
+	describe('double sequence', function() {
+		it('a pair occurs twice', function() {
+			expect(day5.doubleSequence('xyxy')).to.true;
+		});
+		it('aaa does not occure twice', function() {
+			expect(day5.doubleSequence('aaa')).to.false;
+		});
+
+		it('qjhvhtzxzqqjkmpb qj occurs twice', function() {
+			expect(day5.doubleSequence('qjhvhtzxzqqjkmpb')).to.true;
+		});
+	});
+	
+	it('Repeats one letter with one between', function() {
+		expect(day5.repeatsOneLeter('aaa')).to.true;
+
+	});
+
+	it('Repeats one letter with one between, xyx', function() {
+		expect(day5.repeatsOneLeter('xyx')).to.true;
+
+	});
+	it('qjhvhtzxzqqjkmpb is nice', function() {
+		expect(day5.isNiceSecondVersion('qjhvhtzxzqqjkmpb')).to.true;
+	});
+	it('xxyxx is nice', function() {
+		expect(day5.isNiceSecondVersion('xxyxx')).to.true;
+	});
+	it('uurcxstgmygtbstg is naughty because does not repeat', function() {
+		expect(day5.isNiceSecondVersion('uurcxstgmygtbstg')).to.false;
+	});
+	it('ieodomkazucvgmuy is naughty because no pair', function() {
+		expect(day5.isNiceSecondVersion('ieodomkazucvgmuy')).to.false;
+	});
+});

@@ -19,5 +19,19 @@ module.exports = {
 	threeVowels : function (input) {
 		var match = input.match(/[aeiou]/g);
 		return match? match.length >= 3: false;
+	},
+
+	isNiceSecondVersion: function(input) {
+		return this.doubleSequence(input) && this.repeatsOneLeter(input);
+	},
+	doubleSequence: function(input) {
+		var sequence = input.match(/(..).*\1/);
+		return sequence? sequence.length > 0 : false;
+	},
+	repeatsOneLeter: function(input) {
+		var repeats = input.match(/(.).\1/);
+		return repeats? repeats.length > 0: false;
 	}
+
 }
+
