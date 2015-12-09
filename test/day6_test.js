@@ -33,6 +33,7 @@ describe('Santas light stuff', function() {
     expect(day6.howBright(['turn on 0,0 through 0,999', 'toggle 0,0 through 2,2'])).to.equal(1018);
   });
   it('toggle 0,0 through 999,999', function() {
+    this.timeout(15000);
     expect(day6.howBright(['toggle 0,0 through 999,999'])).to.equal(2000000);
   });
 });
