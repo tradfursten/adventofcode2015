@@ -13,8 +13,7 @@ module.exports = {
 		return operations;
 	},
 	getValue: function(operations, node) {
-		_compute(operations, node);
-		return operations[node].value;
+		return _compute(operations, node);
 	}
 
 };
@@ -33,13 +32,19 @@ function _compute(operations, node) {
 	var input1 = operations[node].input1;
 	switch(operations[node].op) {
 		case 'NOT':
-			operations[node].value = ~ _getValue(operations, input0);
+			operations[node].value = _getValue(operations, input0) ^ 65535;
 			break;
 		case 'OR':
 			operations[node].value = _getValue(operations, input1) | _getValue(operations, input0);
 			break;
 		case 'AND':
 			operations[node].value = _getValue(operations, input1) & _getValue(operations, input0);
+			break;
+		case 'LSHIFT':
+			operations[node].value = _getValue(operations, input1) <<  _getValue(operations, input0);
+			break;
+		case 'RSHIFT':
+			operations[node].value = _getValue(operations, input1) >>  _getValue(operations, input0);
 			break;
 		default:
 			operations[node].value = _getValue(operations, input0);
@@ -48,12 +53,15 @@ function _compute(operations, node) {
 	return operations[node].value;
 }
 
-function _getValue(operations, input0) {
-	if(isNaN(+input0)) {
-		return _compute(operations, input0);
+function _getValue(operations, n) {
+	if(isNaN(+n)) {
+		if(operations[n].value) {
+			return operations[n].value;
+		} else {
+			return _compute(operations, n);
+		}
 	} else {
-		return  +input0;
+		return  +n;
 	}
-	
 };
 
