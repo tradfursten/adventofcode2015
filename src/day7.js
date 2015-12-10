@@ -29,25 +29,30 @@ function _getOperation(op) {
 };
 
 function _compute(operations, node) {
+	var input0 = operations[node].input0;
+	var input1 = operations[node].input1;
 	switch(operations[node].op) {
 		case 'NOT':
-			console.log(_getValue(operations, node));
-			console.log(~_getValue(operations, node));
-			operations[node].value = ~ _getValue(operations, node);
+			operations[node].value = ~ _getValue(operations, input0);
+			break;
+		case 'OR':
+			operations[node].value = _getValue(operations, input1) | _getValue(operations, input0);
+			break;
+		case 'AND':
+			operations[node].value = _getValue(operations, input1) & _getValue(operations, input0);
 			break;
 		default:
-			operations[node].value = _getValue(operations, node);
+			operations[node].value = _getValue(operations, input0);
 			break;
 	}
 	return operations[node].value;
 }
 
-function _getValue(operations, node) {
-	var input0 = operations[node].input0;
+function _getValue(operations, input0) {
 	if(isNaN(+input0)) {
 		return _compute(operations, input0);
 	} else {
-		return  +operations[node].input0;
+		return  +input0;
 	}
 	
 };

@@ -16,6 +16,12 @@ describe('Parse input', function() {
 		expect(operations.y.op).to.equal('NOT');
 		expect(operations.y.input0).to.equal('x');
 	});
+	it('x AND x -> y', function() {
+		var operations = day7.parseInput(['x AND x -> y']);
+		expect(operations.y.op).to.equal('AND');
+		expect(operations.y.input0).to.equal('x');
+		expect(operations.y.input1).to.equal('x');
+	});
 });
 
 describe('Get value', function() {
@@ -30,5 +36,14 @@ describe('Get value', function() {
 	it('Not 1 is -2', function() {
 		var operations = day7.parseInput(['NOT 1 -> x']);
 		expect(day7.getValue(operations, 'x')).to.equal(-2);
+	});
+	
+	it('1 AND 3 is 1', function() {
+		var operations = day7.parseInput(['1 AND 3 -> x']);
+		expect(day7.getValue(operations, 'x')).to.equal(1);
+	});
+	it('1 OR 2 is 3', function() {
+		var operations = day7.parseInput(['1 OR 2 -> x']);
+		expect(day7.getValue(operations, 'x')).to.equal(3);
 	});
 });
