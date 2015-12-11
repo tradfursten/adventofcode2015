@@ -13,7 +13,7 @@ module.exports = {
 		return operations;
 	},
 	getValue: function(operations, node) {
-		return _compute(operations, node);
+		return _compute(operations, node) & 0x0000ffff;
 	}
 
 };
@@ -32,7 +32,7 @@ function _compute(operations, node) {
 	var input1 = operations[node].input1;
 	switch(operations[node].op) {
 		case 'NOT':
-			operations[node].value = _getValue(operations, input0) ^ 65535;
+			operations[node].value = ~_getValue(operations, input0);
 			break;
 		case 'OR':
 			operations[node].value = _getValue(operations, input1) | _getValue(operations, input0);
