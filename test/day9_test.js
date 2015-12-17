@@ -24,6 +24,19 @@ xdescribe('Compute shortest path', function() {
   it('A graph with two nodes', function() {
     var graph = {x: {y:1}, y: {x:1}};
     var shortestPath = day9.shortestPath(graph);
-    expect(shortestPath.length).to.equal(1);
+    expect(shortestPath).to.equal(1);
+  });
+  it('A graph with three nodes', function() {
+    var graph = {x: {y:1, z: 2}, y: {x:1, z: 3}, z: {x:2, y:3}};
+    var shortestPath = day9.shortestPath(graph);
+    expect(shortestPath).to.equal(3);
+  });
+});
+
+describe('Compute longest path', function() {
+  it('A graph with three nodes', function() {
+    var graph = {x: {y:1, z: 2}, y: {x:1, z: 3}, z: {x:2, y:3}};
+    var shortestPath = day9.longestPath(graph);
+    expect(shortestPath).to.equal(5);
   });
 });
