@@ -5,7 +5,7 @@ module.exports = {
     },
     howBright: function(input) {
       var lights = parseInput(input, {on: _turnOnLights, off:_decreasLights, toggle: _increaseBrightness});
-      return Object.keys(lights).reduce(function(previous, key) {
+      return Object.keys(lights).reduce((previous, key) => {
         return previous + lights[key];
       }, 0);
     }
