@@ -20,7 +20,7 @@ describe('Build graph', function() {
   });
 });
 
-describe('Compute shortest path', function() {
+xdescribe('Compute shortest path', function() {
   it('A graph with two nodes', function() {
     var graph = {x: {y:1}, y: {x:1}};
     var shortestPath = day9.shortestPath(graph);
