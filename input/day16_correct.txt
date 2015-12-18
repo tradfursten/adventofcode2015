@@ -1,0 +1,2 @@
+Sue 81: goldfish: 5, akitas: 9, trees: 0
+Sue 103: cars: 2, perfumes: 1, goldfish: 5
